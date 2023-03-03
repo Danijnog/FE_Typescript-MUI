@@ -60,6 +60,7 @@ export function Login() {
               autoComplete="email"
               autoFocus
               margin="normal"
+              variant="standard"
             />
             <TextField
               label="Senha"
@@ -69,6 +70,7 @@ export function Login() {
               autoComplete="current-password"
               autoFocus
               margin="normal"
+              variant="standard"
             />
 
             <Button
