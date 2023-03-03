@@ -1,8 +1,6 @@
 import {
   Box,
   Button,
-  Checkbox,
-  FormControlLabel,
   Grid,
   Link,
   Paper,
