@@ -9,10 +9,20 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import { Image } from "mui-image";
+import { useNavigate } from "react-router-dom";
 
 import Logo from "../../assets/projetoInternoJS.svg"
 
 export function Login() {
+
+  const navigate = useNavigate();
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    //mandar pro back o form de login
+    navigate("/project");
+  }
+
   return (
     <Container
       component='main'
@@ -50,7 +60,7 @@ export function Login() {
             Login
           </Typography>
 
-          <Box component='form' noValidate sx={{mt: 1}}>
+          <Box onSubmit={handleSubmit} component='form' noValidate sx={{mt: 1}}>
 
             <TextField
               label="Email"
