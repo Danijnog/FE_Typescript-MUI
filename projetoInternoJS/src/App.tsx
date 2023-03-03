@@ -2,6 +2,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Login } from "./pages/Login";
 
+import { ptBR } from "@mui/material/locale"; //isso é pra deixar a formatação da data em pt
+
 function App() {
 
   const theme = createTheme({
@@ -23,8 +25,17 @@ function App() {
         "Poppins",
         "Roboto"
       ].join(",")
+    },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536
+      }
     }
-  });
+  }, ptBR); ////isso é pra deixar a formatação da data em pt
 
   return (
     <ThemeProvider theme={theme}>
