@@ -1,6 +1,5 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Login } from "./pages/Login";
 import { AppRoutes } from "./routes/AppRoutes"
 
 import { ptBR } from "@mui/material/locale"; //isso é pra deixar a formatação da data em pt
@@ -30,7 +29,7 @@ function App() {
     breakpoints: {
       values: {
         xs: 0,
-        sm: 600,
+        sm: 900,
         md: 900,
         lg: 1200,
         xl: 1536
