@@ -8,7 +8,7 @@ export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="login" element={<Login />} />
+        <Route index element={<Login />} />
         <Route path="/" element={<NavBar />}>
           <Route path="project" element={<ProjectList />} />
           <Route path="contract" element={<ContractList />}/>
