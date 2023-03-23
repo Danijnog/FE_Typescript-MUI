@@ -1,28 +1,50 @@
 import {
+  Alert,
   Box,
   Button,
   Grid,
   Link,
   Paper,
+  Snackbar,
   TextField,
-  Typography 
+  Typography
 } from "@mui/material";
 import { Container } from "@mui/system";
+import { AxiosError } from "axios";
 import { Image } from "mui-image";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Logo from "../../assets/projetoInternoJS.svg"
+import Logo from "../../assets/projetoInternoJS.svg";
+import { login } from "../../services/Auth/login";
 
 export function Login() {
 
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // aqui entraria mandar pro back o form de login
-    navigate("/project");
-  }
+    const data = new FormData(event.currentTarget); //isso vai ser para pegarmos as informações q o usuario digitar em email e senha
 
+    try {
+      const body = {
+        email: String(data.get("email")),
+        senha: String(data.get("password"))
+      };
+  
+      await login(body);
+      console.log("Logado com sucesso");
+      navigate("/project");
+
+    } catch(error) {
+      console.log(error.response.data); //esse é o erro que o back manda pra gente (vai ser "Email e/ou senha incorretos!")
+      setMessage(error.response.data);  //isso é para setar a mensagem no componente do MUI snackbar, q vai ser um modal de erro
+      setOpen(true); //isso é para abrir o componente Snackbar do MUI mostrando o erro
+    }
+  }
   return (
     <Container
       component='main'
@@ -71,6 +93,7 @@ export function Login() {
               autoFocus
               margin="normal"
               variant="standard"
+              name="email"
             />
             <TextField
               label="Senha"
@@ -81,6 +104,9 @@ export function Login() {
               autoFocus
               margin="normal"
               variant="standard"
+              name="password"
+              type="password"
+            
             />
 
             <Button
@@ -100,6 +126,21 @@ export function Login() {
           </Box>
         </Box>
       </Paper>
+      
+      {/* //snackbar é um componente do MUI, q vamos utilizar para mensagens de erro no login */}
+      <Snackbar
+        open={open}
+        message={message}
+        autoHideDuration={1000}
+        anchorOrigin = {{ vertical: "bottom", horizontal: "center"}}>
+
+        <Alert
+          elevation={6}
+          variant="filled"
+          severity="error">
+          {message}
+        </Alert>
+      </Snackbar>
 
     </Container>
   );
