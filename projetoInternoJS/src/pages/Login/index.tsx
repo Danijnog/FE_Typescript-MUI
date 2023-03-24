@@ -39,7 +39,7 @@ export function Login() {
       console.log("Logado com sucesso");
       navigate("/project");
 
-    } catch(error) {
+    } catch(error : any ) {
       console.log(error.response.data); //esse é o erro que o back manda pra gente (vai ser "Email e/ou senha incorretos!")
       setMessage(error.response.data);  //isso é para setar a mensagem no componente do MUI snackbar, q vai ser um modal de erro
       setOpen(true); //isso é para abrir o componente Snackbar do MUI mostrando o erro

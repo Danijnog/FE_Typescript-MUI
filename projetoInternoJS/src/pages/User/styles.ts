@@ -4,5 +4,5 @@ import { Typography } from "@mui/material";
 export const HeaderTypography = styled(Typography) ({
   color: "primary",
   fontSize: 16,
-  fontWight: "medium"
+  fontWeight: "medium"
 });
