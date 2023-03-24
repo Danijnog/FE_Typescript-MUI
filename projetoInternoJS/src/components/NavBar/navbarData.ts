@@ -36,7 +36,7 @@ export const navbarData: Drawer[] = [
   {
     title: "Usuários",
     Icon: PersonIcon,
-    path: "",
+    path: "/users",
     roles: ["admin"]
   }
 ]
